@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-base-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base text-ink font-body antialiased;
+    background-image: var(--tw-gradient-mesh, none);
+  }
+
+  ::selection {
+    @apply bg-accent-indigo/40 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-base-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-base-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34344a;
+  }
+
+  /* Visible keyboard focus ring everywhere, respecting accessibility */
+  :focus-visible {
+    outline: 2px solid #6366f1;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply bg-white/[0.06] border-white/[0.14];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm
+      bg-gradient-accent text-white shadow-glow transition-transform duration-300
+      hover:scale-[1.03] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm
+      border border-white/15 text-ink bg-white/[0.03] backdrop-blur-md transition-all duration-300
+      hover:bg-white/[0.08] hover:border-white/25;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/10 text-ink placeholder:text-ink-faint
+      focus:border-accent-indigo/60 focus:bg-white/[0.06] outline-none transition-colors duration-200;
+  }
+
+  .label-eyebrow {
+    @apply text-xs uppercase tracking-[0.2em] text-accent-cyan font-mono font-medium;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
