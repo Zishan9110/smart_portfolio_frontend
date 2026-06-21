@@ -16,4 +16,6 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
   },
+  // Add base URL for production
+  base: '/',
 });
